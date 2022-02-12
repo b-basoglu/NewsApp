@@ -1,8 +1,7 @@
 # NewsApp
 
-  MVVM architecture
-  
-  Hilt
+ *MVVM architecture
+ *Hilt
   
   Kotlin
   
