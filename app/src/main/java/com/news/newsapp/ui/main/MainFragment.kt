@@ -41,6 +41,8 @@ class MainFragment : BaseFragment(), BaseAdapterListener {
 
     private val handler: Handler = Handler()
 
+    private var gridLayoutManager: GridLayoutManager ?=null
+
     private val progressFinishListener = object :
         ErrorRefreshView.ProgressListener{
         override fun progressFinished() {
@@ -60,14 +62,17 @@ class MainFragment : BaseFragment(), BaseAdapterListener {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        this.binding.rvNews.layoutManager = GridLayoutManager(requireContext(), resources.getInteger(R.integer.grid_column_count))
+        gridLayoutManager?.let {
+            it.spanCount = resources.getInteger(R.integer.grid_column_count)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        gridLayoutManager = GridLayoutManager(requireContext(), resources.getInteger(R.integer.grid_column_count))
         this.binding.rvNews.run {
             adapter = listAdapter
-            layoutManager = GridLayoutManager(requireContext(), resources.getInteger(R.integer.grid_column_count))
+            layoutManager = gridLayoutManager
         }
         viewModel.run {
             adapter = listAdapter
