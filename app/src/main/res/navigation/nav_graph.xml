@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.news.newsapp.ui.main.MainFragment"
+        android:label="@string/MAIN_FRAGMENT"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.news.newsapp.ui.webview.WebViewFragment"
+        android:label="@string/WEB_VIEW_FRAGMENT"
+        tools:layout="@layout/webview_fragment" >
+        <argument
+            android:name="WEB_VIEW_URL"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="WEB_VIEW_SOURCE"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
+</navigation>

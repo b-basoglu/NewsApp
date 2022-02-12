@@ -1,0 +1,140 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("key.properties").newDataInputStream())
+String news_api_key = properties.getProperty("news_api_key")
+android {
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled = true
+        testInstrumentationRunner "com.news.newsapp.runner.CustomRunner"
+        buildConfigField("String", "NEWS_API_KEY", "$news_api_key")
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+    }
+
+    flavorDimensions 'default'
+    productFlavors {
+        dev {
+            dimension 'default'
+            applicationIdSuffix ".dev"
+            buildConfigField("String", "NEWS_API_KEY", "$news_api_key")
+        }
+        live {
+            dimension 'default'
+            buildConfigField("String", "NEWS_API_KEY", "$news_api_key")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        // work-runtime-ktx 2.1.0 and above now requires Java 8
+        jvmTarget = JavaVersion.VERSION_1_8
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
+
+    buildFeatures.viewBinding = true
+
+    packagingOptions {
+        // Multiple dependency bring these files in. Exclude them to enable
+        // our test APK to build (has no effect on our AARs)
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
+    }
+
+}
+
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def kaptDependencies = rootProject.ext.kaptDependencies
+    def testingDependencies =  rootProject.ext.testingDependencies
+    def androidTestingDependencies =  rootProject.ext.androidTestingDependencies
+    def kaptAndroidTestDependencies =  rootProject.ext.kaptAndroidTestDependencies
+
+    api(
+            appDependencies.coreKtx,
+            appDependencies.appcompat,
+            appDependencies.material,
+            appDependencies.constraint,
+            appDependencies.liveData,
+            appDependencies.viewmodel,
+            appDependencies.navigationFragment,
+            appDependencies.navigationKtx,
+            appDependencies.hilt,
+            appDependencies.room,
+            appDependencies.roomktx,
+            appDependencies.paging,
+            appDependencies.swipeRefresh,
+            appDependencies.coil,
+            appDependencies.roomPaging,
+            appDependencies.gson,
+            appDependencies.okHttp,
+            appDependencies.okHttpInterceptor,
+            appDependencies.retrofit,
+            appDependencies.retrofitConverter,
+            appDependencies.lifecycleRuntime,
+            appDependencies.lifecycleCommonJava8,
+            appDependencies.lifecycleExtensions,
+            appDependencies.fragmentKtx,
+    )
+
+    testImplementation(
+            testingDependencies.testJunit
+    )
+
+    androidTestImplementation(
+            androidTestingDependencies.androidTestJunit,
+            androidTestingDependencies.pagingTest,
+            androidTestingDependencies.androidTestEspressoCore,
+
+            androidTestingDependencies.androidTestEspressoContrib,
+            androidTestingDependencies.androidTestEspressoIntens,
+            androidTestingDependencies.androidTestArchCore,
+            androidTestingDependencies.androidTestCoroutine,
+            androidTestingDependencies.androidTestUIAutomator,
+            androidTestingDependencies.androidTestTruth,
+            androidTestingDependencies.androidTestWork,
+            androidTestingDependencies.androidTestNavigation,
+            androidTestingDependencies.androidTestHilt,
+    )
+    kapt(
+            kaptDependencies.hiltAndroidCompiler,
+            kaptDependencies.hiltCompiler,
+            kaptDependencies.room,
+    )
+
+    kaptAndroidTest(
+            kaptAndroidTestDependencies.hiltAndroidCompiler,
+    )
+
+}

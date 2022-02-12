@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="green">#00ff00</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="purple_darker">#41374D</color>
+    <color name="red_opacity_80">#CCDA0303</color>
+    <color name="orange">#FF9800</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="grey_60_transparent">#804B4A48</color>
+    <color name="grey_80_transparent">#CC4B4A48</color>
+    <color name="orange_primary">#FFC107</color>
+    <color name="reddish_pink_transparent">#59BF2323</color>
+    <color name="reddish_green_transparent">#CC87D133</color>
+    <color name="reddish_orange_transparent">#59F4690E</color>
+    <color name="gradientBottom">#15180f</color>
+    <color name="gradientTop">#434944</color>
+    <color name="colorPrimary">#434955</color>
+    <color name="gradient_scale_black">#15181E</color>
+    <color name="gradient_scale_orange">#4DB5AA60</color>
+    <color name="gradient_scale_secondary_reddish">#4DFF9800</color>
+</resources>

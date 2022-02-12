@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="news_list">News</string>
+    <string name="news_source">News Source</string>
+    <string name="MAIN_FRAGMENT">main_fragment</string>
+    <string name="WEB_VIEW_FRAGMENT">webview_fragment</string>
+    <string name="NO_DATA">No data to display</string>
+    <string name="COUNTDOWN">Countdown</string>
+    <string name="REFRESH">WILL REFRESH</string>
+
+</resources>
