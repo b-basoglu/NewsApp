@@ -60,12 +60,7 @@ class MainFragment : BaseFragment(), BaseAdapterListener {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            this.binding.rvNews.layoutManager = GridLayoutManager(requireContext(), resources.getInteger(R.integer.grid_column_count))
-
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            this.binding.rvNews.layoutManager = GridLayoutManager(requireContext(), resources.getInteger(R.integer.grid_column_count))
-        }
+        this.binding.rvNews.layoutManager = GridLayoutManager(requireContext(), resources.getInteger(R.integer.grid_column_count))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
