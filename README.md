@@ -1,18 +1,18 @@
 # NewsApp
 
-MVVM architecture
-Hilt
-Kotlin
-Paging3
-View Binding
-Coroutines
-Flows
-Navigation Component
-JUnit4
-Expresso
-Coil
-SQLite(Room)
-Live Data
+  MVVM architecture
+  Hilt
+  Kotlin
+  Paging3
+  View Binding
+  Coroutines
+  Flows
+  Navigation Component
+  JUnit4
+  Expresso
+  Coil
+  SQLite(Room)
+  Live Data
 
 Application is has fullsensor orientetion.
 Generic recycleview implemented.
