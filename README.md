@@ -14,4 +14,4 @@ Also number of column will increase when application is run on a tablet(tablet p
 
 Some examples of tests implemented ->
 
-# * Unit Test * Fragment Test * Activity Test * UseCase Test * ViewModel Test
+* Unit Test * Fragment Test * Activity Test * UseCase Test * ViewModel Test
