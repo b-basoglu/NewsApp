@@ -2,7 +2,7 @@
 
 # * MVVM architecture * Hilt * Kotlin * Paging3 * View Binding * Coroutines * Flows * Navigation Component * JUnit4 * Expresso * Coil * SQLite(Room) * Live Data
 
-Application is has fullsensor orientetion.
+Application has fullsensor orientetion.
 
 Generic recycleview implemented.
 
