@@ -8,9 +8,9 @@ Generic recycleview implemented.
 
 Webview can open and play full-screen videos on every orientation.
 
-Recycleview column number will change based on whether it is in landscape mode.(portrait column = 1, tablet lanscape column= 2)
+Recycleview column number will change based on whether it is in landscape mode.
 
-Also number of column will increase when application is run on a tablet(tablet portrait column = 2, tablet lanscape column= 3)
+Also number of column will increase when application is run on a tablet
 
 Some examples of tests implemented ->
 
