@@ -1,7 +1,7 @@
 package com.news.newsapp.di.module
 
 import com.news.newsapp.db.NewsDatabase
-import com.news.newsapp.di.repository.MainRepository
+import com.news.newsapp.domain.repository.MainRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

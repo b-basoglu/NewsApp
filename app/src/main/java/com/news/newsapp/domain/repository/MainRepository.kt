@@ -1,11 +1,10 @@
-package com.news.newsapp.di.repository
+package com.news.newsapp.domain.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.news.newsapp.db.NewsDatabase
 import com.news.newsapp.entities.News
-import com.news.newsapp.network.api.ApiHelper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

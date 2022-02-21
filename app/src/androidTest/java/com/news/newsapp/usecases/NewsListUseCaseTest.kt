@@ -3,8 +3,8 @@ package com.news.newsapp.usecases
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.asLiveData
 import com.news.newsapp.BuildConfig
-import com.news.newsapp.di.repository.MainRepository
-import com.news.newsapp.di.usecase.NewsListUseCase
+import com.news.newsapp.domain.repository.MainRepository
+import com.news.newsapp.domain.usecase.NewsListUseCase
 import com.news.newsapp.network.NetworkResponse
 import com.news.newsapp.network.api.ApiHelper
 import com.news.newsapp.utils.Constants

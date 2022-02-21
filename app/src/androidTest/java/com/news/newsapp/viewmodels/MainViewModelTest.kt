@@ -3,8 +3,8 @@ package com.news.newsapp.viewmodels
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.news.newsapp.base.baseadapter.BaseAdapterClick
 import com.news.newsapp.base.baseadapter.BaseAdapterListener
-import com.news.newsapp.di.repository.MainRepository
-import com.news.newsapp.di.usecase.NewsListUseCase
+import com.news.newsapp.domain.repository.MainRepository
+import com.news.newsapp.domain.usecase.NewsListUseCase
 import com.news.newsapp.ui.main.MainViewModel
 import com.news.newsapp.ui.main.NewsListRecyclerviewAdapter
 import com.news.newsapp.utils.MainCoroutineRule

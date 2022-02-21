@@ -7,8 +7,8 @@ import androidx.paging.PagingData
 import com.news.newsapp.BuildConfig
 import com.news.newsapp.base.BaseViewModel
 import com.news.newsapp.base.baseadapter.RecyclerItem
-import com.news.newsapp.di.repository.MainRepository
-import com.news.newsapp.di.usecase.NewsListUseCase
+import com.news.newsapp.domain.repository.MainRepository
+import com.news.newsapp.domain.usecase.NewsListUseCase
 import com.news.newsapp.network.NetworkResponse
 import com.news.newsapp.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,7 +1,7 @@
-package com.news.newsapp.di.usecase
+package com.news.newsapp.domain.usecase
 
 import android.text.TextUtils
-import com.news.newsapp.di.repository.MainRepository
+import com.news.newsapp.domain.repository.MainRepository
 import com.news.newsapp.network.NetworkResponse
 import com.news.newsapp.network.api.ApiHelper
 import kotlinx.coroutines.Dispatchers
