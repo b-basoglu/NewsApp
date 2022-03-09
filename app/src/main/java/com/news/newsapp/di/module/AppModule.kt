@@ -3,6 +3,8 @@ package com.news.newsapp.di.module
 import android.app.Application
 import android.content.Context
 import com.news.newsapp.BuildConfig
+import com.news.newsapp.network.BaseUrlConfigHolder
+import com.news.newsapp.network.BaseUrlInterceptor
 import com.news.newsapp.network.api.ApiHelper
 import com.news.newsapp.network.api.ApiHelperImpl
 import com.news.newsapp.network.api.ApiService
@@ -30,24 +32,34 @@ object AppModule{
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        OkHttpClient.Builder()
-            .callTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-            .connectTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-            .readTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-            .writeTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-            .addInterceptor(loggingInterceptor)
-            .build()
-    } else OkHttpClient
-        .Builder()
-        .callTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-        .connectTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-        .readTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-        .writeTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
-        .build()
+    fun provideBaseUrlConfigHolder() : BaseUrlConfigHolder = BaseUrlConfigHolder()
 
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(baseUrlConfigHolder: BaseUrlConfigHolder) : OkHttpClient {
+        val baseUrlInterceptor = BaseUrlInterceptor(baseUrlConfigHolder)
+        if (BuildConfig.DEBUG) {
+            val loggingInterceptor = HttpLoggingInterceptor()
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            return OkHttpClient.Builder()
+                .callTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .connectTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .readTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .writeTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .addInterceptor(baseUrlInterceptor)
+                .addInterceptor(loggingInterceptor)
+                .build()
+        } else {
+            return OkHttpClient
+                .Builder()
+                .callTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .connectTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .readTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .writeTimeout(Constants.NetworkConstants.TimeoutSecForRequest, TimeUnit.SECONDS)
+                .addInterceptor(baseUrlInterceptor)
+                .build()
+        }
+    }
     // Singleton Retrofit
     @Provides
     @Singleton
